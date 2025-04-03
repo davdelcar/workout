@@ -50,7 +50,7 @@ export default function DayExercises() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-12">
+    <div className="max-w-2xl mx-auto px-4 py-12 min-h-full">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
           <Link

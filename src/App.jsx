@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-900 text-gray-100">
+      <div className="h-full bg-gray-900 text-gray-100 overflow-y-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/day/:id" element={<DayExercises />} />

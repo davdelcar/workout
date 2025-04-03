@@ -36,7 +36,7 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-12">
+    <div className="max-w-2xl mx-auto px-4 py-12 min-h-full">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-semibold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
           Mi Rutina

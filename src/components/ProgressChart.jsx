@@ -35,6 +35,7 @@ export default function ProgressChart({ exerciseId, name }) {
           .select('weight, date')
           .eq('exercise_id', exerciseId)
           .order('date', { ascending: true })
+          .limit(20)  // Limitar a los últimos 20 registros para mejor visualización
 
         if (error) throw error
 

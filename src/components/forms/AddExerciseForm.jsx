@@ -13,12 +13,11 @@ export default function AddExerciseForm({ dayId }) {
     setIsLoading(true)
 
     try {
-      if (weight === '') {
-        setWeight('0')
-      }
-      
+      const now = new Date().toISOString()
       const numWeight = parseFloat(weight) || 0
-      const { error } = await supabase
+
+      // Crear el ejercicio
+      const { data: exerciseData, error: exerciseError } = await supabase
         .from('exercises')
         .insert([
           {
@@ -27,8 +26,23 @@ export default function AddExerciseForm({ dayId }) {
             day_id: dayId
           }
         ])
+        .select()
+        .single()
 
-      if (error) throw error
+      if (exerciseError) throw exerciseError
+
+      // Registrar el peso inicial en el historial
+      const { error: historyError } = await supabase
+        .from('exercise_history')
+        .insert([
+          {
+            exercise_id: exerciseData.id,
+            weight: numWeight,
+            date: now
+          }
+        ])
+
+      if (historyError) throw historyError
 
       navigate(`/day/${dayId}`)
     } catch (error) {
